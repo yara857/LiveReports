@@ -23,7 +23,7 @@ jobs:
           pip install requests pandas gspread facebook_business oauth2client  
         
       - name: Run Script
-        run: python ../LiveSpentLeadsCPLBudget.py  
+        run: python ../../LiveSpentLeadsCPLBudget.py  
         
       - name: Run Script
-        run: python ../gender.py  
+        run: python ../../gender.py  
