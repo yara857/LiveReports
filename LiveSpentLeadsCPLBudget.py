@@ -18,7 +18,7 @@ accounts = me.get_ad_accounts(fields=["id", "name"])
 
 # Authenticate with Google Sheets
 scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("striped-sunspot-451315-t6-8b0e56f96486.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("striped-sunspot-451315-t6-d98ce1ffb107.json", scope)
 client = gspread.authorize(creds)
 
 # Open Google Sheet
