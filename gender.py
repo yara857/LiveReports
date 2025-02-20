@@ -3,6 +3,7 @@ import gspread
 import pandas as pd
 from datetime import datetime
 import os
+import json
 from collections import defaultdict
 from oauth2client.service_account import ServiceAccountCredentials
 from facebook_business.api import FacebookAdsApi
@@ -16,12 +17,13 @@ access_token = os.environ.get("FB_ACCESS_TOKEN")FacebookAdsApi.init(access_token
 me = User(fbid='me')
 accounts = me.get_ad_accounts(fields=['id', 'name'])
 
+google_credentials = os.environ["GOOGLE_SHEET_CREDENTIALS"]
+creds_dict = json.loads(google_credentials)
 # Google Sheets Setup
 scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
-creds = ServiceAccountCredentials.from_json_keyfile_name("striped-sunspot-451315-t6-8b0e56f96486.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
-
 # Open Google Sheet (Replace with your Sheet Name)
 spreadsheet = client.open("live spent with gender and age")
 sheet = spreadsheet.sheet1  # Access first sheet
