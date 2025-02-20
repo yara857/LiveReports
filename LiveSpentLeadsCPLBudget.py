@@ -8,6 +8,7 @@ from facebook_business.adobjects.user import User
 from facebook_business.adobjects.adaccount import AdAccount
 from facebook_business.adobjects.adsinsights import AdsInsights
 from datetime import datetime, timedelta
+import json
 
 # Facebook API Setup
 access_token = os.environ.get("FB_ACCESS_TOKEN")
@@ -16,9 +17,11 @@ FacebookAdsApi.init(access_token=access_token)
 me = User(fbid='me')
 accounts = me.get_ad_accounts(fields=['id', 'name'])
 
+google_credentials = os.environ["GOOGLE_SHEET_CREDENTIALS"]
+creds_dict = json.loads(google_credentials)
 # Google Sheets Setup
 scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("striped-sunspot-451315-t6-8b0e56f96486.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
 
 # Open Google Sheet (Replace with your Sheet Name)
