@@ -1,0 +1,29 @@
+name: Run Python Script Every 30 Minutes
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"  # Runs every 30 minutes
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install Dependencies
+        run: |
+          pip install requests pandas gspread facebook_business oauth2client  
+
+      - name: Run Script
+        run: python LiveSpentLeadsCPLBudget.py  
+        
+      - name: Run Script
+        run: python gender.py  
