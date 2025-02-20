@@ -1,6 +1,7 @@
 import gspread
 import pandas as pd
 import requests
+import os
 from oauth2client.service_account import ServiceAccountCredentials
 from facebook_business.api import FacebookAdsApi
 from facebook_business.adobjects.user import User
@@ -9,7 +10,7 @@ from facebook_business.adobjects.adsinsights import AdsInsights
 from datetime import datetime, timedelta
 
 # Facebook API Setup
-access_token = "EAAJDrGJ1eoMBOZC31FesOpVU0alCXeWPEKBpAKjAaTHTMPQMxCcyrJNd5nQPenp2SZA0Yd331OG36eT8RwjCPYZC4KilPrgUgRQuIDoMDIHYYrOy9QXwAuy8EhXiy21zsi2LpswNovnWXmG4iMQhvQPHpx2Ccxn80XJcb0RV2phcjso11CB8vteMKeYR9smUsmhrMxB7ePN3OmD"
+access_token = os.environ.get("FB_ACCESS_TOKEN")
 FacebookAdsApi.init(access_token=access_token)
 
 me = User(fbid='me')
