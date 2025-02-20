@@ -21,7 +21,10 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install requests pandas gspread facebook_business oauth2client  
-
+          
+      - name: Set up Google Sheets Credentials
+        run: echo '${{ secrets.GOOGLE_SHEET_CREDENTIALS }}' > striped-sunspot-451315-t6-8b0e56f96486.json
+        
       - name: Run Script
         run: python LiveSpentLeadsCPLBudget.py  
         
