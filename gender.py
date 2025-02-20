@@ -12,23 +12,11 @@ from facebook_business.adobjects.adaccount import AdAccount
 from facebook_business.adobjects.adsinsights import AdsInsights
 from config import FACEBOOK_ACCESS_TOKEN
 
-# Load Facebook Credentials from GitHub Secrets
-# access_token = os.getenv("FB_ACCESS_TOKEN")
-# if not access_token:
-#     raise ValueError("Missing FACEBOOK_ACCESS_TOKEN secret.")
-
 FacebookAdsApi.init(access_token=FACEBOOK_ACCESS_TOKEN)
 me = User(fbid="me")
 accounts = me.get_ad_accounts(fields=["id", "name"])
 
-# Load Google Credentials from GitHub Secrets
-# google_credentials_json = os.getenv("GOOGLE_CREDENTIALS")
-# if not google_credentials_json:
-#     raise ValueError("Missing GOOGLE_CREDENTIALS secret.")
 
-# Save Google credentials to a temporary file
-with open("striped-sunspot-451315-t6-8b0e56f96486.json", "w") as temp_file:
-    json.dump(json.loads(google_credentials_json), temp_file)
 
 # Authenticate with Google Sheets
 scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
