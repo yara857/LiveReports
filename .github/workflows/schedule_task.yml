@@ -21,9 +21,6 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install requests pandas gspread facebook_business oauth2client  
-          
-      - name: Set Up Acess Token
-        run: echo '${{ secrets.FB_ACCESS_TOKEN }}'
         
       - name: Run Script
         run: python LiveSpentLeadsCPLBudget.py  
