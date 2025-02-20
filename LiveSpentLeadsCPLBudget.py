@@ -20,9 +20,9 @@ me = User(fbid="me")
 accounts = me.get_ad_accounts(fields=["id", "name"])
 
 # Load Google Credentials from Secrets
-google_credentials_json = os.getenv("GOOGLE_CREDENTIALS")
-if not google_credentials_json:
-    raise ValueError("Missing GOOGLE_CREDENTIALS secret.")
+# google_credentials_json = os.getenv("GOOGLE_CREDENTIALS")
+# if not google_credentials_json:
+#     raise ValueError("Missing GOOGLE_CREDENTIALS secret.")
 
 # Save Google credentials to a temp file
 with open("striped-sunspot-451315-t6-8b0e56f96486.json", "w") as temp_file:
