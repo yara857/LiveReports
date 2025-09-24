@@ -1,1 +1,0 @@
-python "D:\2024\live.py"
