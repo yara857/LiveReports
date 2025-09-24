@@ -1,0 +1,1 @@
+python "D:\2024\gender.py"
